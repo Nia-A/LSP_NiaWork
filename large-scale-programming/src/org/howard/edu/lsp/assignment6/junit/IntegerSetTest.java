@@ -28,14 +28,27 @@ class IntegerSetTest {
 	@DisplayName("Test cases for the length of a set")
 	public void lengthTest() {
 		IntegerSet testSetOne = new IntegerSet();
+		IntegerSet testSetTwo = new IntegerSet();
+		IntegerSet testSetThree = new IntegerSet();
 		
 		testSetOne.add(1);
 		testSetOne.add(2);
 		testSetOne.add(3);
 		testSetOne.add(4);
 		
-		int outcome = testSetOne.length();
-		assertEquals(4, outcome);
+		testSetTwo.add(0);
+		testSetTwo.add(10);
+		
+		
+		
+		int outcomeOne = testSetOne.length();
+		int outcomeTwo = testSetTwo.length();
+		int outcomeThree = testSetThree.length();
+		
+		assertEquals(4, outcomeOne);
+		assertEquals(2, outcomeTwo);
+		assertEquals(0, outcomeThree);
+		
 	}
 	
 	@Test
@@ -63,8 +76,10 @@ class IntegerSetTest {
 		
 		boolean outcome = testSetOne.equals(testSetTwo);
 		boolean outcomeTwo = testSetOne.equals(testSetThree);
+		boolean outcomeThree = testSetTwo.equals(testSetThree);
 		assertFalse(outcome);
 		assertTrue(outcomeTwo);
+		assertFalse(outcomeThree);
 	}
 	
 	@Test
@@ -92,11 +107,14 @@ class IntegerSetTest {
 		
 		int testValue1 = 2;
 		int testValue2 = 10;
+		int testValue3 = 15;
 		
 		boolean outcome = testSetOne.contains(testValue1);
 		boolean outcomeTwo = testSetTwo.contains(testValue2);
+		boolean outcomeThree = testSetThree.contains(testValue3);
 		assertTrue(outcome);
 		assertFalse(outcomeTwo);
+		assertFalse(outcomeThree);
 	}
 	
 	@Test
@@ -185,18 +203,25 @@ class IntegerSetTest {
 		testSetTwo.add(4);
 		testSetTwo.add(5);
 		
+		testSetThree.add(20);
+		testSetThree.add(25);
+		
 		int item1 = 12;
 		int item2 = 10;
+		int item3 = -37;
 		
 		testSetOne.add(item1);
-		testSetTwo.add(item2);	
+		testSetTwo.add(item2);
+		testSetThree.add(item3);
 	
 		
 		int outcomeOne = testSetOne.length();
 		int outcomeTwo = testSetTwo.length();
+		int outcomeThree = testSetThree.length();
 		
 		assertEquals(5, outcomeOne);
 		assertEquals(6, outcomeTwo);
+		assertEquals(3, outcomeThree);
 		
 	}
 	
@@ -218,19 +243,26 @@ class IntegerSetTest {
 		testSetTwo.add(4);
 		testSetTwo.add(5);
 		
+		testSetThree.add(27);
+		testSetThree.add(37);
+		
 		int item1 = 12;
 		int item2 = 10;
+		int item3 = 27;
 		
 		testSetOne.add(item1);
 		testSetTwo.add(item2);	
 		testSetOne.remove(item1);
+		testSetThree.remove(item3);
 	
 		
 		int outcomeOne = testSetOne.length();
 		int outcomeTwo = testSetTwo.length();
+		int outcomeThree = testSetThree.length();
 		
 		assertEquals(4, outcomeOne);
 		assertEquals(6, outcomeTwo);
+		assertEquals(1, outcomeThree);
 		
 	}
 	
@@ -250,6 +282,7 @@ class IntegerSetTest {
 	@DisplayName("Test cases for the clearing of a set")
 	public void clearTest() {
 		IntegerSet testSetOne = new IntegerSet();
+		IntegerSet testSetTwo = new IntegerSet();
 		
 		testSetOne.add(1);
 		testSetOne.add(2);
@@ -257,22 +290,32 @@ class IntegerSetTest {
 		
 		testSetOne.clear();
 		
-		String outcome = testSetOne.toString();
-		assertEquals("[]", outcome);
+		String outcomeOne = testSetOne.toString();
+		String outcomeTwo = testSetTwo.toString();
+		assertEquals("[]", outcomeOne);
+		assertEquals("[]", outcomeTwo);
 	}
 	
 	@Test
 	@DisplayName("Test cases for setting to string")
 	public void toStringTest() {
 		IntegerSet testSetOne = new IntegerSet();
+		IntegerSet testSetTwo = new IntegerSet();
 		
 		testSetOne.add(1);
 		testSetOne.add(2);
 		testSetOne.add(3);
 		
+		testSetTwo.add(45);
+		testSetTwo.add(27);
+		testSetTwo.add(51);
 		
-		String outcome = testSetOne.toString();
-		assertEquals("[1,2,3]", outcome);
+		
+		String outcomeOne = testSetOne.toString();
+		String outcomeTwo = testSetTwo.toString();
+		
+		assertEquals("[1, 2, 3]", outcomeOne);
+		assertEquals("[45, 27, 51]", outcomeTwo);
 	}
 	
 	@Test
@@ -280,7 +323,6 @@ class IntegerSetTest {
 	public void largestTest() throws IntegerSetException {
 		IntegerSet testSetOne = new IntegerSet();
 		IntegerSet testSetTwo = new IntegerSet();
-		IntegerSet testSetThree = new IntegerSet();
 		
 		testSetOne.add(1);
 		testSetOne.add(2);
@@ -294,7 +336,7 @@ class IntegerSetTest {
 		int outcomeTwo = testSetTwo.largest();
 		
 		
-		assertEquals(7, outcomeOne);
+		assertEquals(3, outcomeOne);
 		assertEquals(7, outcomeTwo);
 		
 	}
@@ -332,5 +374,72 @@ class IntegerSetTest {
 //		assertEquals(2, outcomeThree);
 //		
 //	}
+	
+	@Test
+	@DisplayName("Test cases for union")
+	public void unionTest() {
+		IntegerSet testSetOne = new IntegerSet();
+		IntegerSet testSetTwo = new IntegerSet();
+		
+		testSetOne.add(1);
+		testSetOne.add(2);
+		testSetOne.add(3);
+		
+		testSetTwo.add(5);
+		testSetTwo.add(6);
+		testSetTwo.add(7);
+		testSetOne.union(testSetTwo);
+		
+		String outcomeOne = testSetOne.toString();
+		
+		assertEquals("[1, 2, 3, 5, 6, 7]", outcomeOne);
+		
+	}
+	
+	@Test
+	@DisplayName("Test cases for intersection")
+	public void intersectionTest() {
+		IntegerSet testSetOne = new IntegerSet();
+		IntegerSet testSetTwo = new IntegerSet();
+		
+		testSetOne.add(1);
+		testSetOne.add(2);
+		testSetOne.add(3);
+		
+		testSetTwo.add(1);
+		testSetTwo.add(6);
+		testSetTwo.add(3);
+		testSetOne.intersect(testSetTwo);
+		
+		String outcomeOne = testSetOne.toString();
+		
+		assertEquals("[1, 3]", outcomeOne);
+		
+	}
+	
+	@Test
+	@DisplayName("Test cases for difference")
+	public void diffTest() {
+		IntegerSet testSetOne = new IntegerSet();
+		IntegerSet testSetTwo = new IntegerSet();
+		
+		testSetOne.add(1);
+		testSetOne.add(2);
+		testSetOne.add(3);
+		
+		testSetTwo.add(1);
+		testSetTwo.add(6);
+		testSetTwo.add(3);
+		testSetOne.diff(testSetTwo);
+		
+		String outcomeOne = testSetOne.toString();
+
+		
+		
+		assertEquals("[2]", outcomeOne);
+
+		
+	}
+	
 
 }
