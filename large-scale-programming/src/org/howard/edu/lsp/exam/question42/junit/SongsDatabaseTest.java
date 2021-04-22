@@ -1,5 +1,4 @@
 package org.howard.edu.lsp.exam.question42.junit;
-import static org.junit.jupiter.api.Assertions.*;
 import java.util.*;
 
 //import org.howard.edu.lsp.exam.question42;

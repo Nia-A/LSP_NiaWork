@@ -1,5 +1,6 @@
 package org.howard.edu.lsp.exam.question41.junit;
-import org.howard.edu.lsp.exam.question41.*;
+import org.howard.edu.lsp.exam.question41.zeroesRemoved;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
@@ -9,11 +10,14 @@ import org.junit.jupiter.api.Test;
 
 class removeZeroesTest {
 
+	zeroesRemoved num = new zeroesRemoved();
+
+	
 	@Test
 	@DisplayName("Test cases for removing 0s from an ArrayList")
 	public void removeZeroesTester() {
 		
-		ArrayList<Integer> arrlist = new ArrayList<Integer>(7);
+		ArrayList<Integer> arrlist = new ArrayList<Integer>();
 
 		arrlist.add(0);
 		arrlist.add(10);
@@ -22,7 +26,7 @@ class removeZeroesTest {
 		arrlist.add(6);
 		arrlist.add(0);
 		arrlist.add(1);
-		removeZeros(arrlist);
+		num.removeZeroes(arrlist);
 		
 		int length = arrlist.size();
 		assertEquals(length, 5);
@@ -37,21 +41,49 @@ class removeZeroesTest {
 		arrlist2.add(4);
 		arrlist2.add(1);
 		
-		removeZeros(arrlist2);
+		num.removeZeroes(arrlist2);
 		
 		int length2 = arrlist2.size();
-		assertEquals(length2, 5);
-        
+		assertEquals(length2, 4);
+		
+		
+	
+		}
+	
+	@Test
+	@DisplayName("Test cases for removing 0s from an ArrayList with negatives")
+	public void removeZeroesNegativeTester() {
+		
+		ArrayList<Integer> arrlist = new ArrayList<Integer>();
+
+		arrlist.add(0);
+		arrlist.add(-10);
+		arrlist.add(5);
+		arrlist.add(-28);
+		arrlist.add(6);
+		arrlist.add(0);
+		arrlist.add(1);
+		arrlist.add(0);
+		arrlist.add(2);
+		num.removeZeroes(arrlist);
+		
+		int length = arrlist.size();
+		assertEquals(length, 6);
+		
+		
+		}
+	
+	@Test
+	@DisplayName("Test cases for removing 0s from an empty ArrayList")
+	public void removeEmptyZeroesTester() {
+		
+		ArrayList<Integer> arrlist = new ArrayList<Integer>();
+		int length = arrlist.size();
+
+		assertEquals(length, 0);
+		
+	
 		}
 
-	private void removeZeros(ArrayList<Integer> arrlist) {
-		// TODO Auto-generated method stub
-		for (int index = 0; index < arrlist.size(); index++)
-			if(arrlist.get(index) == 0)
-			arrlist.remove(index);
-		
-	}
-
 	
-
 }

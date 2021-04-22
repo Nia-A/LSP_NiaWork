@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes","u":"allclasses-index.html"},{"p":"org.howard.edu.lsp.exam.question41","l":"zeroesRemoved"}];updateSearchResults();
+typeSearchIndex = [{"l":"All Classes","u":"allclasses-index.html"},{"p":"org.howard.edu.lsp.exam.question41","l":"removeZeroes"},{"p":"org.howard.edu.lsp.exam.question41","l":"zeroesRemoved"}];updateSearchResults();
