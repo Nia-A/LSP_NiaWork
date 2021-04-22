@@ -1,0 +1,1 @@
+memberSearchIndex = [{"p":"org.howard.edu.lsp.exam.question41","c":"zeroesRemoved","l":"removeZeros(ArrayList<Integer>)","u":"removeZeros(java.util.ArrayList)"},{"p":"org.howard.edu.lsp.exam.question41","c":"zeroesRemoved","l":"zeroesRemoved()","u":"%3Cinit%3E()"}];updateSearchResults();
