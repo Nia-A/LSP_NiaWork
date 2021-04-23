@@ -18,7 +18,7 @@ interface Truck {
 
 // Tolling class implements the specified interface TollBooth
 class Tolling implements TollBooth {
-	Tolling(){
+	public Tolling(){
 		trucksSinceReceiptCollection = 0;
 		receipts = 0;
 	}
